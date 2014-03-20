@@ -13,7 +13,7 @@ win.open();
 
 var crashlytics = require('crashlytics');
 crashlytics.startWithAPIKey('ea9d6823a6f5af9ee61a8d931431e6f197ac339c');
-
+crashlytics.setDebugMode(true);
 Ti.API.info("module is => " + crashlytics);
 
 var button = Ti.UI.createButton({title: 'click to crash!!'});

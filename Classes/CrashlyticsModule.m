@@ -33,7 +33,7 @@
 	// this method is called when the module is first loaded
 	// you *must* call the superclass
 	[super startup];
-	NSLog(@"[INFO] %@ loaded",self);
+	NSLog(@"[INFO] [CrashlyticsModule]:: %@ loaded",self);
 }
 
 -(void)shutdown:(id)sender
@@ -97,11 +97,10 @@
 	if (size > 0){
 		NSString *keyAPI =  [NSString stringWithFormat:@"%@",[key objectAtIndex:0]];
 		[Crashlytics startWithAPIKey: keyAPI];
-		[[Crashlytics sharedInstance] setDebugMode:YES];
-		NSLog(@"startWithAPIKey:: Crashlytics starts tracing with key %@", keyAPI);
+		NSLog(@"[CrashlyticsModule] startWithAPIKey:: Crashlytics starts tracing with key %@", keyAPI);
 	}
 	else {
-		NSLog(@"startWithAPIKey:: Wrong string format");
+		NSLog(@"[CrashlyticsModule] startWithAPIKey:: Wrong string format");
 	}
 }
 
@@ -128,7 +127,7 @@
                     forKey:(NSString *) [args objectAtIndex:1]];
     }
     else{
-        NSLog(@"setObjectValue:: Wrong paramters");
+        NSLog(@"[CrashlyticsModule] setObjectValue:: Wrong paramters");
     }
 }
 
@@ -140,7 +139,7 @@
                     forKey:(NSString *) [args objectAtIndex:1]];
     }
     else{
-        NSLog(@"setIntValue:: Wrong paramters");
+        NSLog(@"[CrashlyticsModule] setIntValue:: Wrong paramters");
     }
 }
 
@@ -152,7 +151,7 @@
                     forKey:(NSString *) [args objectAtIndex:1]];
     }
     else{
-        NSLog(@"setBoolValue:: Wrong paramters");
+        NSLog(@"[CrashlyticsModule] setBoolValue:: Wrong paramters");
     }
 }
 
@@ -164,10 +163,20 @@
                     forKey:(NSString *) [args objectAtIndex:1]];
     }
     else{
-        NSLog(@"setBoolValue:: Wrong paramters");
+        NSLog(@"[CrashlyticsModule] setBoolValue:: Wrong paramters");
     }
 }
-
+-(void)setDebugMode: (id)debug
+{
+	NSString *debugMode =  [NSString stringWithFormat:@"%@",debug];
+	NSLog(@"[CrashlyticsModule] setDebugMode:: %@", [debugMode isEqualToString:@"1"]  ? @"debugMode is ON" : @"debugMode is OFF");
+	if([debugMode isEqualToString:@"1"] ) {
+		[[Crashlytics sharedInstance] setDebugMode:YES];
+	}
+	else {
+		[[Crashlytics sharedInstance] setDebugMode:NO];
+	}
+}
 -(void)crash
 {
 	[[Crashlytics sharedInstance] crash];
