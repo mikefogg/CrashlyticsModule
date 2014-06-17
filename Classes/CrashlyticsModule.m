@@ -8,7 +8,7 @@
 #import "TiBase.h"
 #import "TiHost.h"
 #import "TiUtils.h"
- #import "Crashlytics.h"
+#import "Crashlytics.h"
 
 @implementation CrashlyticsModule
 
