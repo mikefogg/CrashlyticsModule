@@ -1,0 +1,17 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0.0
+apiversion: 2
+description: CrashlyticsModule
+author: Your Name
+license: Specify your license
+copyright: Copyright (c) 2014 by Your Company
+
+# these should not be edited
+name: CrashlyticsModule
+moduleid: crashlytics
+guid: 1b890551-73bd-429b-a8fe-1afc9f95b7a9
+platform: android
+minsdk: 3.2.0
